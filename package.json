@@ -1,6 +1,6 @@
 {
   "name": "stay-fresh-lsp-proxy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Claude Code plugin that proxies any LSP server and filters stale/noisy diagnostics from conversation context",
   "type": "module",
   "main": "dist/cli.js",
