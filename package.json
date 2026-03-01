@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "description": "A Claude Code plugin that proxies any LSP server and filters stale/noisy diagnostics from conversation context",
   "type": "module",
-  "main": "dist/proxy.js",
+  "main": "dist/cli.js",
   "bin": {
-    "stay-fresh-lsp-proxy": "dist/proxy.js",
-    "stay-fresh-setup": "dist/setup.js"
+    "stay-fresh-lsp-proxy": "dist/cli.js"
   },
   "files": [
     "dist/",
@@ -25,6 +24,14 @@
     "diagnostics",
     "plugin"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iloom-ai/stay-fresh-lsp-proxy.git"
+  },
+  "homepage": "https://github.com/iloom-ai/stay-fresh-lsp-proxy#readme",
+  "bugs": {
+    "url": "https://github.com/iloom-ai/stay-fresh-lsp-proxy/issues"
+  },
   "author": "acreeger",
   "license": "MIT",
   "packageManager": "pnpm@10.28.2",

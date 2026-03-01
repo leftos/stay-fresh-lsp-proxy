@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import { parseArgs } from "node:util";
 import { execSync, type ExecSyncOptions } from "node:child_process";
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
@@ -43,11 +41,11 @@ const LANGUAGES: Record<string, LanguageConfig> = {
 
 function printUsage(): void {
   console.log(`
-stay-fresh-setup — Install stay-fresh LSP proxy plugins for Claude Code
+stay-fresh-lsp-proxy setup — Install stay-fresh LSP proxy plugins for Claude Code
 
 Usage:
-  npx stay-fresh-setup --typescript --python --rust
-  npx stay-fresh-setup --uninstall
+  npx stay-fresh-lsp-proxy setup --typescript --python --rust
+  npx stay-fresh-lsp-proxy setup --uninstall
 
 Options:
   --typescript   Install TypeScript/JavaScript LSP proxy
@@ -57,10 +55,10 @@ Options:
   --help         Show this help message
 
 Examples:
-  npx stay-fresh-setup --typescript              # Just TypeScript
-  npx stay-fresh-setup --typescript --python     # TypeScript + Python
-  npx stay-fresh-setup --typescript --python --rust  # All languages
-  npx stay-fresh-setup --uninstall               # Remove everything
+  npx stay-fresh-lsp-proxy setup --typescript              # Just TypeScript
+  npx stay-fresh-lsp-proxy setup --typescript --python     # TypeScript + Python
+  npx stay-fresh-lsp-proxy setup --typescript --python --rust  # All languages
+  npx stay-fresh-lsp-proxy setup --uninstall               # Remove everything
 `);
 }
 
@@ -295,7 +293,7 @@ function uninstall(): void {
   console.log("Restart Claude Code for changes to take effect.");
 }
 
-function main(): void {
+export function main(): void {
   const { values } = parseArgs({
     options: {
       typescript: { type: "boolean", default: false },
@@ -337,4 +335,3 @@ function main(): void {
   install(requested);
 }
 
-main();

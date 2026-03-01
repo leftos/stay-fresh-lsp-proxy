@@ -25,15 +25,15 @@ stay-fresh-lsp-proxy sits between Claude Code and your LSP server. It forwards e
 ## Quick Install
 
 ```bash
-npx stay-fresh-setup --typescript --python --rust
+npx stay-fresh-lsp-proxy setup --typescript --python --rust
 ```
 
 Pick only the languages you need:
 
 ```bash
-npx stay-fresh-setup --typescript              # Just TypeScript/JS
-npx stay-fresh-setup --typescript --python     # TypeScript + Python
-npx stay-fresh-setup --rust                    # Just Rust
+npx stay-fresh-lsp-proxy setup --typescript              # Just TypeScript/JS
+npx stay-fresh-lsp-proxy setup --typescript --python     # TypeScript + Python
+npx stay-fresh-lsp-proxy setup --rust                    # Just Rust
 ```
 
 This will:
@@ -186,7 +186,7 @@ If you prefer to set things up manually instead of using the setup script:
 ## Uninstall
 
 ```bash
-npx stay-fresh-setup --uninstall
+npx stay-fresh-lsp-proxy setup --uninstall
 ```
 
 This removes all stay-fresh plugins, the marketplace registration, the `ENABLE_LSP_TOOL` setting, and the global package.

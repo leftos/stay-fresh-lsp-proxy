@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import { spawn, type ChildProcess } from "node:child_process";
 import { appendFileSync, mkdirSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -143,7 +141,7 @@ class MessageParser {
   }
 }
 
-function startProxy(): void {
+export function startProxy(): void {
   const [command, ...args] = process.argv.slice(2);
 
   if (!command) {
@@ -206,4 +204,3 @@ function startProxy(): void {
   process.on("SIGINT", () => child.kill("SIGINT"));
 }
 
-startProxy();
