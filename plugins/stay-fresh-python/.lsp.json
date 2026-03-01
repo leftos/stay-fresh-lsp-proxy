@@ -1,7 +1,7 @@
 {
   "python": {
-    "command": "stay-fresh-lsp-proxy",
-    "args": ["pyright-langserver", "--stdio"],
+    "command": "npx",
+    "args": ["-y", "stay-fresh-lsp-proxy", "pyright-langserver", "--stdio"],
     "extensionToLanguage": {
       ".py": "python"
     }

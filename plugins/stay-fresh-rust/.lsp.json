@@ -1,7 +1,7 @@
 {
   "rust": {
-    "command": "stay-fresh-lsp-proxy",
-    "args": ["rust-analyzer"],
+    "command": "npx",
+    "args": ["-y", "stay-fresh-lsp-proxy", "rust-analyzer"],
     "extensionToLanguage": {
       ".rs": "rust"
     }

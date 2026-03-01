@@ -148,30 +148,8 @@ function removeEnableLspTool(): void {
 function install(requested: string[]): void {
   console.log("\nstay-fresh-setup: Installing LSP proxy plugins\n");
 
-  // Step 1: Install the proxy binary globally
-  console.log("Step 1: Installing stay-fresh-lsp-proxy globally...");
-  if (isBinaryInPath("stay-fresh-lsp-proxy")) {
-    console.log("  stay-fresh-lsp-proxy already installed");
-  } else {
-    try {
-      run("npm install -g stay-fresh-lsp-proxy");
-      console.log("  Installed stay-fresh-lsp-proxy globally");
-    } catch {
-      // Package may not be on npm yet — try GitHub install
-      try {
-        run("npm install -g github:iloom-ai/stay-fresh-lsp-proxy");
-        console.log("  Installed stay-fresh-lsp-proxy globally (from GitHub)");
-      } catch (e2) {
-        const err = e2 as Error;
-        console.error(`  Error installing globally: ${err.message}`);
-        console.error("  You may need to run with sudo or fix your npm prefix");
-        process.exit(1);
-      }
-    }
-  }
-
-  // Step 2: Check for LSP server binaries
-  console.log("\nStep 2: Checking LSP server binaries...");
+  // Step 1: Check for LSP server binaries
+  console.log("Step 1: Checking LSP server binaries...");
   const warnings: string[] = [];
   for (const lang of requested) {
     const config = LANGUAGES[lang];
@@ -184,8 +162,8 @@ function install(requested: string[]): void {
     }
   }
 
-  // Step 3: Add marketplace
-  console.log("\nStep 3: Adding stay-fresh marketplace...");
+  // Step 2: Add marketplace
+  console.log("\nStep 2: Adding stay-fresh marketplace...");
   try {
     run(`claude plugin marketplace add ${MARKETPLACE_ID}`);
     console.log("  Marketplace added");
@@ -200,8 +178,8 @@ function install(requested: string[]): void {
     }
   }
 
-  // Step 4: Install plugins and disable conflicts
-  console.log("\nStep 4: Installing plugins...");
+  // Step 3: Install plugins and disable conflicts
+  console.log("\nStep 3: Installing plugins...");
   const installed: string[] = [];
   for (const lang of requested) {
     const config = LANGUAGES[lang];
@@ -230,8 +208,8 @@ function install(requested: string[]): void {
     }
   }
 
-  // Step 5: Enable LSP tool
-  console.log("\nStep 5: Enabling LSP tool...");
+  // Step 4: Enable LSP tool
+  console.log("\nStep 4: Enabling LSP tool...");
   ensureEnableLspTool();
 
   // Summary
@@ -275,19 +253,6 @@ function uninstall(): void {
   // Step 3: Remove ENABLE_LSP_TOOL
   console.log("\nStep 3: Cleaning up settings...");
   removeEnableLspTool();
-
-  // Step 4: Uninstall global package
-  console.log("\nStep 4: Removing global package...");
-  if (isBinaryInPath("stay-fresh-lsp-proxy")) {
-    try {
-      run("npm uninstall -g stay-fresh-lsp-proxy");
-      console.log("  Removed stay-fresh-lsp-proxy globally");
-    } catch {
-      console.log("  Could not remove global package (may need manual removal)");
-    }
-  } else {
-    console.log("  Global package not found (skipping)");
-  }
 
   console.log("\n--- Uninstall Complete ---");
   console.log("Restart Claude Code for changes to take effect.");

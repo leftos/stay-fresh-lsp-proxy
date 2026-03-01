@@ -1,7 +1,7 @@
 {
   "typescript": {
-    "command": "stay-fresh-lsp-proxy",
-    "args": ["typescript-language-server", "--stdio"],
+    "command": "npx",
+    "args": ["-y", "stay-fresh-lsp-proxy", "typescript-language-server", "--stdio"],
     "extensionToLanguage": {
       ".ts": "typescript",
       ".tsx": "typescriptreact",

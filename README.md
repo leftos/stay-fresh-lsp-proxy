@@ -37,10 +37,9 @@ npx stay-fresh-lsp-proxy setup --rust                    # Just Rust
 ```
 
 This will:
-1. Install the `stay-fresh-lsp-proxy` binary globally
-2. Register the plugin marketplace with Claude Code
-3. Install per-language plugins and disable conflicting official LSP plugins
-4. Enable the LSP tool in Claude Code settings
+1. Register the plugin marketplace with Claude Code
+2. Install per-language plugins and disable conflicting official LSP plugins
+3. Enable the LSP tool in Claude Code settings
 
 ## Supported Languages
 
@@ -142,31 +141,26 @@ Control filtering behavior with environment variables. Set them in `~/.claude/se
 
 If you prefer to set things up manually instead of using the setup script:
 
-1. Install the proxy globally:
-   ```bash
-   npm install -g stay-fresh-lsp-proxy
-   ```
-
-2. Add the marketplace:
+1. Add the marketplace:
    ```bash
    claude plugin marketplace add iloom-ai/stay-fresh-lsp-proxy
    ```
 
-3. Install the plugin(s) you want:
+2. Install the plugin(s) you want:
    ```bash
    claude plugin install stay-fresh-typescript@stay-fresh-lsp-proxy
    claude plugin install stay-fresh-python@stay-fresh-lsp-proxy
    claude plugin install stay-fresh-rust@stay-fresh-lsp-proxy
    ```
 
-4. Disable conflicting official plugins:
+3. Disable conflicting official plugins:
    ```bash
    claude plugin disable typescript-lsp@claude-plugins-official
    claude plugin disable pyright-lsp@claude-plugins-official
    claude plugin disable rust-analyzer-lsp@claude-plugins-official
    ```
 
-5. Enable the LSP tool in `~/.claude/settings.json`:
+4. Enable the LSP tool in `~/.claude/settings.json`:
    ```json
    {
      "env": {
@@ -175,7 +169,7 @@ If you prefer to set things up manually instead of using the setup script:
    }
    ```
 
-6. Restart Claude Code.
+5. Restart Claude Code.
 
 ## Uninstall
 
