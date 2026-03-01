@@ -142,9 +142,15 @@ Control filtering behavior with environment variables. Set them in `~/.claude/se
 
 If you prefer to set things up manually instead of using the setup script:
 
-1. Install the proxy globally:
+> **Note:** The package is not yet published to npm. Until it is, install from source as shown below.
+
+1. Clone and build the package, then install globally:
    ```bash
-   npm install -g stay-fresh-lsp-proxy
+   git clone https://github.com/iloom-ai/stay-fresh-lsp-proxy /tmp/stay-fresh-lsp-proxy
+   cd /tmp/stay-fresh-lsp-proxy
+   npm install
+   npm run build
+   npm install -g /tmp/stay-fresh-lsp-proxy
    ```
 
 2. Add the marketplace:
