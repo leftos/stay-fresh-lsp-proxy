@@ -20,6 +20,12 @@
       "source": "./plugins/stay-fresh-rust",
       "description": "Rust LSP with diagnostic filtering",
       "version": "0.1.0"
+    },
+    {
+      "name": "stay-fresh-csharp",
+      "source": "./plugins/stay-fresh-csharp",
+      "description": "C# LSP with diagnostic filtering",
+      "version": "0.1.0"
     }
   ]
 }

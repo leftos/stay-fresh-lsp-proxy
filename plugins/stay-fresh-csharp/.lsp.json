@@ -1,0 +1,9 @@
+{
+  "csharp-ls": {
+    "command": "npx",
+    "args": ["-y", "stay-fresh-lsp-proxy", "csharp-ls"],
+    "extensionToLanguage": {
+      ".cs": "csharp"
+    }
+  }
+}

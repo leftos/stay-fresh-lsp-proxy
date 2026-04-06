@@ -25,7 +25,7 @@ stay-fresh-lsp-proxy sits between Claude Code and your LSP server. It forwards e
 ## Quick Install
 
 ```bash
-npx stay-fresh-lsp-proxy setup --typescript --python --rust
+npx stay-fresh-lsp-proxy setup --typescript --python --rust --csharp
 ```
 
 Pick only the languages you need:
@@ -34,6 +34,7 @@ Pick only the languages you need:
 npx stay-fresh-lsp-proxy setup --typescript              # Just TypeScript/JS
 npx stay-fresh-lsp-proxy setup --typescript --python     # TypeScript + Python
 npx stay-fresh-lsp-proxy setup --rust                    # Just Rust
+npx stay-fresh-lsp-proxy setup --csharp                  # Just C#
 ```
 
 This will:
@@ -48,6 +49,7 @@ This will:
 | TypeScript/JS | `typescript-language-server` | `npm i -g typescript-language-server typescript` |
 | Python | `pyright-langserver` | `npm i -g pyright` |
 | Rust | `rust-analyzer` | `rustup component add rust-analyzer` |
+| C# | `csharp-ls` | `dotnet tool install --global csharp-ls` |
 
 The setup script will warn you if the required LSP server binary is not found in your PATH.
 
@@ -151,6 +153,7 @@ If you prefer to set things up manually instead of using the setup script:
    claude plugin install stay-fresh-typescript@stay-fresh-lsp-proxy
    claude plugin install stay-fresh-python@stay-fresh-lsp-proxy
    claude plugin install stay-fresh-rust@stay-fresh-lsp-proxy
+   claude plugin install stay-fresh-csharp@stay-fresh-lsp-proxy
    ```
 
 3. Disable conflicting official plugins:
@@ -158,6 +161,7 @@ If you prefer to set things up manually instead of using the setup script:
    claude plugin disable typescript-lsp@claude-plugins-official
    claude plugin disable pyright-lsp@claude-plugins-official
    claude plugin disable rust-analyzer-lsp@claude-plugins-official
+   claude plugin disable csharp-lsp@claude-plugins-official
    ```
 
 4. Enable the LSP tool in `~/.claude/settings.json`:

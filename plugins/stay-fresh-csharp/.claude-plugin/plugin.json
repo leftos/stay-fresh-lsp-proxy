@@ -1,0 +1,8 @@
+{
+  "name": "stay-fresh-csharp",
+  "description": "C# LSP with diagnostic filtering via stay-fresh proxy",
+  "version": "0.1.0",
+  "author": {
+    "name": "acreeger"
+  }
+}

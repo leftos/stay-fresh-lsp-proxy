@@ -37,6 +37,13 @@ const LANGUAGES: Record<string, LanguageConfig> = {
     conflicts: "rust-analyzer-lsp@claude-plugins-official",
     installHint: "rustup component add rust-analyzer",
   },
+  csharp: {
+    flag: "--csharp",
+    plugin: "stay-fresh-csharp",
+    lspBinary: "csharp-ls",
+    conflicts: "csharp-lsp@claude-plugins-official",
+    installHint: "dotnet tool install --global csharp-ls",
+  },
 };
 
 function printUsage(): void {
@@ -44,13 +51,14 @@ function printUsage(): void {
 stay-fresh-lsp-proxy setup — Install stay-fresh LSP proxy plugins for Claude Code
 
 Usage:
-  npx stay-fresh-lsp-proxy setup --typescript --python --rust
+  npx stay-fresh-lsp-proxy setup --typescript --python --rust --csharp
   npx stay-fresh-lsp-proxy setup --uninstall
 
 Options:
   --typescript   Install TypeScript/JavaScript LSP proxy
   --python       Install Python (Pyright) LSP proxy
   --rust         Install Rust LSP proxy
+  --csharp       Install C# (csharp-ls) LSP proxy
   --uninstall    Remove all stay-fresh plugins and cleanup
   --help         Show this help message
 
@@ -58,6 +66,7 @@ Examples:
   npx stay-fresh-lsp-proxy setup --typescript              # Just TypeScript
   npx stay-fresh-lsp-proxy setup --typescript --python     # TypeScript + Python
   npx stay-fresh-lsp-proxy setup --typescript --python --rust  # All languages
+  npx stay-fresh-lsp-proxy setup --csharp                  # Just C#
   npx stay-fresh-lsp-proxy setup --uninstall               # Remove everything
 `);
 }
@@ -236,6 +245,7 @@ export function main(): void {
       typescript: { type: "boolean", default: false },
       python: { type: "boolean", default: false },
       rust: { type: "boolean", default: false },
+      csharp: { type: "boolean", default: false },
       uninstall: { type: "boolean", default: false },
       help: { type: "boolean", short: "h", default: false },
     },
@@ -262,6 +272,7 @@ export function main(): void {
   if (values.typescript) requested.push("typescript");
   if (values.python) requested.push("python");
   if (values.rust) requested.push("rust");
+  if (values.csharp) requested.push("csharp");
 
   if (requested.length === 0) {
     console.error("Error: No languages specified.\n");
